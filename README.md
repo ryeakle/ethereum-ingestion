@@ -6,7 +6,11 @@ A quick project for streaming ethereum node messages from an Infura project to a
 ## How To
 
 ### Provision the stack
+<<<<<<< HEAD
 1. Create a project on Infura (https://infura.io/)
+=======
+1. Create a project on Infura (free for under 100k requests per day)
+>>>>>>> 99b281513fedd7be0fded684a1905d7ce757d400
 2. set the appropriate values in `infura_client/settings.py` for pointing the container to your Infura project and whichever kafka topic you'd like to stream to. _Do not commit any secret info to version control_
 3. provision with `docker-compose up -d` in the project root directory
 4. confirm everything is working as expected with `docker ps -a`. This stack does a tiny bit of error handling on startup, but things can always go wrong.
