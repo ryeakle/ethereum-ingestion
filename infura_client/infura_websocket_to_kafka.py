@@ -1,12 +1,8 @@
 import json
-import time
-import random
+
 import websocket
-from settings import INFURA_WEBSOCKET, KAFKA_SERVER, KAFKA_TOPIC, INFURA_SUBSCRIPTION
-
 from kafka import KafkaProducer
-from kafka.errors import NoBrokersAvailable
-
+from settings import INFURA_SUBSCRIPTION, INFURA_WEBSOCKET, KAFKA_SERVER, KAFKA_TOPIC
 from utils import retry_with_exponential_backoff
 
 
@@ -16,13 +12,6 @@ def pipe_infura_websocket_to_kafka(subscription_type):
     set up a websocket connection, request that data, then receive and pipe to a kafka
     topic as described in settings.py
     """
-
-    start_subscription = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "eth_subscribe",
-        "params": [subscription_type],
-    }
 
     producer = get_kafka_producer(bootstrap_servers=[KAFKA_SERVER])
 
